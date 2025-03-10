@@ -1,0 +1,24 @@
+import numpy as np
+
+# Sample data
+X = np.asarray([20, 5, 10, 13, 12])
+Y = np.asarray([44, 22, 25, 32, 27])
+
+# Initialize the model parameters
+b1 = 0
+b0 = 0
+
+L = 0.001  # The learning rate
+epochs = 1000  # The number of iterations to perform gradient descent
+n = np.size(X)  # Number of elements in X
+
+# Performing Gradient Descent
+for i in range(epochs):
+    Y_pred = b1 * X + b0  # The current predicted value of Y
+    D_b1 = (-2 / n) * sum(X * (Y - Y_pred))  # Derivative wrt b1
+    D_b0 = (-2 / n) * sum(Y - Y_pred)  # Derivative wrt b0
+    b1 = b1 - L * D_b1  # Update b1
+    b0 = b0 - L * D_b0  # Update b0
+
+# Print the results
+print("b1:", b1, "b0:", b0)
